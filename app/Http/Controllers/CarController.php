@@ -12,7 +12,7 @@ class CarController extends Controller
     //
     public function index(){
         $data = Car::get();
-        return response()->json($data,200);
+        return response()->json(["data"=>"test data"],200);
 
     }
 }
