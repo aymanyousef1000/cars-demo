@@ -31,7 +31,7 @@ class CarsDB extends Seeder
             $add->Engine   = 'new engine '.$i;
             $add->Power   = 'new power '.$i;
             $add->Seats   = 'new seats '.$i;
-            $add->New_Price   = 'New_Price '.$i;
+            
             $add->save();
         }
     }
