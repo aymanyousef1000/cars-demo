@@ -28,7 +28,7 @@ class CreateCarsTable extends Migration
             $table->string('Engine');
             $table->string('Power');
             $table->string('Seats');
-            $table->string('New_Price')->nullable();
+            $table->string('New_Price')->nullable($value = true);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));;
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
