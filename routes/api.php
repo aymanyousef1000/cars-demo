@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('cars', 'CarController@index');
+Route::apiResource('cars', 'CarController');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

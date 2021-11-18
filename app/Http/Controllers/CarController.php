@@ -23,7 +23,7 @@ class CarController extends Controller
         // data validation 
         $validate = Validator::make($request->all(), [
             "Name"               => "required",
-            "Locaton"            => "required",
+            "Location"            => "required",
             "Year"               => "required",
             "Kilometers_Driven"  => "required",
             "Fuel_Type"          => "required",
@@ -61,7 +61,7 @@ class CarController extends Controller
     }
 
 
-    
+
 
 
 
