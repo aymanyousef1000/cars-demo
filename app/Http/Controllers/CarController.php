@@ -14,7 +14,6 @@ class CarController extends Controller
     public function index(){
         $data = Car::get();
         return response()->json($data,200);
-
     }
 
 
@@ -62,6 +61,65 @@ class CarController extends Controller
 
 
 
+    public function show($id){
+        $data = Car::where('id',$id)->get();
+        return response()->json($data,200);
+    }
+
+    public function update(Request $request ,$id){
+         // data validation 
+         $validate = Validator::make($request->all(), [
+            "Name"               => "required",
+            "Location"            => "required",
+            "Year"               => "required",
+            "Kilometers_Driven"  => "required",
+            "Fuel_Type"          => "required",
+            "Transmission"       => "required",
+            "Owner_Type"         => "required",
+            "Mileage"            => "required",
+            "Engine"             => "required",
+            "Power"              => "required",
+            "Seats"              => "required"
+        ]);
+
+        
+        if ($validate->fails()) {
+            # check if there are any errors and return it ...
+            $errors = $validate->errors();
+            return response()->json($errors,400);
+        }else {
+            # make an insert operation ...
+            $op = Car::where("id",$id)->update($request->all());
+
+            // check if this operation is sucessed or no ... 
+            if($op) {
+                # if sucessed...
+                $message = 'operation success'; 
+                return response()->json($message,200);               
+            }else {
+                # if not sucessed...
+                $message = 'operation faild';
+                return response()->json($message,400);
+            }
+
+        }
+
+    }
+    public function destroy($id){
+
+        $op = Car::where("id",$id)->delete();
+
+        // check if this operation is sucessed or no ... 
+        if($op) {
+            # if sucessed...
+            $message = 'operation success'; 
+            return response()->json($message,200);               
+        }else {
+            # if not sucessed...
+            $message = 'operation faild';
+            return response()->json($message,400);
+        }
+    }
 
 
 
